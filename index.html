@@ -1,0 +1,847 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مدينة العيون | جوهرة الصحراء</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --dark: #173c36;
+      --green: #246b55;
+      --gold: #d7a84b;
+      --cream: #fffaf0;
+      --text: #26352f;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    /* Navigation */
+    header {
+      background: rgba(23, 60, 54, 0.97);
+      color: white;
+      padding: 14px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 15px #0002;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      color: var(--gold);
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: .3s;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 88vh;
+      background:
+        linear-gradient(rgba(0,0,0,.48), rgba(0,0,0,.55)),
+        url("https://fr.le360.ma/resizer/v2/ISHM5ILMYZDSXMZKQ2LSIU63PY.png?auth=21da59cbd4b8cac4dabe4586b83ea48c061b3b5bc5f4747e842b82d20c770360&height=684&smart=true&width=1216");
+      background-position: center;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 30px;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      animation: appear 1.5s ease;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 7vw, 75px);
+      font-weight: 900;
+      color: white;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero p {
+      font-size: 19px;
+      margin-bottom: 28px;
+    }
+
+    .main-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--dark);
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: .3s;
+    }
+
+    .main-btn:hover {
+      background: white;
+      transform: translateY(-4px);
+    }
+
+    /* General sections */
+    section {
+      padding: 75px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: 35px;
+      color: var(--dark);
+      font-weight: 900;
+    }
+
+    .section-title span {
+      display: block;
+      width: 75px;
+      height: 4px;
+      background: var(--gold);
+      margin: 10px auto;
+      border-radius: 5px;
+    }
+
+    .section-title p {
+      color: #777;
+      margin-top: 10px;
+    }
+
+    /* About */
+    .about {
+      background: white;
+    }
+
+    .about-content {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+      font-size: 17px;
+    }
+
+    .about-content p {
+      margin-bottom: 15px;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-top: 35px;
+    }
+
+    .fact {
+      background: var(--cream);
+      padding: 22px;
+      border-radius: 15px;
+      border-bottom: 4px solid var(--gold);
+    }
+
+    .fact h3 {
+      color: var(--green);
+      font-size: 20px;
+    }
+
+    /* Places */
+    .places {
+      background: #f7f3e9;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 17px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px #00000012;
+      transition: .35s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px #00000020;
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      background: #e8dfcc;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h3 {
+      color: var(--dark);
+      font-size: 21px;
+      margin-bottom: 8px;
+    }
+
+    .card-content p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 4px 12px;
+      background: #f8edcf;
+      color: #805b18;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* Foum El Oued */
+    .beach {
+      background: white;
+    }
+
+    .beach-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .beach-box img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 18px;
+    }
+
+    .beach-box h3 {
+      font-size: 27px;
+      color: var(--green);
+      margin-bottom: 15px;
+    }
+
+    /* Heritage */
+    .heritage {
+      background: var(--dark);
+      color: white;
+    }
+
+    .heritage .section-title h2 {
+      color: white;
+    }
+
+    .heritage .section-title p {
+      color: #ddd;
+    }
+
+    .heritage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .heritage-item {
+      background: #ffffff12;
+      border: 1px solid #ffffff25;
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      transition: .3s;
+    }
+
+    .heritage-item:hover {
+      background: #ffffff20;
+      transform: translateY(-5px);
+    }
+
+    .heritage-item .symbol {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .heritage-item h3 {
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    /* Gallery */
+    .gallery {
+      background: #f7f3e9;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: 14px;
+      transition: .4s;
+      background: #e8dfcc;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Footer */
+    footer {
+      background: #102d28;
+      color: white;
+      text-align: center;
+      padding: 30px 15px;
+    }
+
+    footer h2 {
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: #ddd;
+    }
+
+    .back-top {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: var(--gold);
+      color: var(--dark);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: bold;
+      box-shadow: 0 3px 12px #0003;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }/* الثقافة الصحراوية بالصور */
+.culture-section {
+  background: linear-gradient(135deg, #173c36, #285d49);
+  color: white;
+}
+
+.culture-section .section-title h2 {
+  color: #fff;
+}
+
+.culture-section .section-title p {
+  color: #eee;
+}
+
+.culture-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 22px;
+}
+
+.culture-card {
+  background: #fffaf0;
+  color: #26352f;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px #0003;
+  transition: .3s;
+}
+
+.culture-card:hover {
+  transform: translateY(-8px);
+}
+
+.culture-card img {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  display: block;
+}
+
+.culture-card .info {
+  padding: 18px;
+  text-align: center;
+}
+
+.culture-card h3 {
+  color: #246b55;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.culture-card p {
+  font-size: 14px;
+  color: #666;
+}
+
+    /* Responsive */
+    @media (max-width: 750px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 12px;
+      }
+
+      nav a {
+        font-size: 12px;
+      }
+
+      .hero {
+        min-height: 70vh;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 55px 6%;
+      }
+
+      .section-title h2 {
+        font-size: 27px;
+      }
+
+      .beach-box {
+        grid-template-columns: 1fr;
+      }
+
+      .beach-box img {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">العيون ♡</div>
+
+    <nav>
+      <a href="#home">الرئيسية</a>
+      <a href="#about">عن المدينة</a>
+      <a href="#places">المعالم</a>
+      <a href="#beach">فم الواد</a>
+      <a href="#heritage">الثقافة</a>
+      <a href="#gallery">معرض الصور</a>
+    </nav>
+  </header>
+
+  <!-- الصفحة الرئيسية -->
+  <div class="hero" id="home">
+    <div class="hero-content">
+      <h1>مرحباً بكم في <span>العيون</span></h1>
+      <p>
+        اكتشفوا جمال مدينة العيون، عاصمة الصحراء،
+        وتعرفوا على معالمها وطبيعتها وتراثها الأصيل.
+      </p>
+      <a href="#about" class="main-btn">اكتشف المدينة</a>
+    </div>
+  </div>
+
+  <!-- عن المدينة -->
+  <section class="about" id="about">
+    <div class="section-title">
+      <h2>نبذة عن مدينة العيون</h2>
+      <span></span>
+      <p>مدينة تجمع بين الأصالة والتطور</p>
+    </div>
+
+    <div class="about-content">
+      <p>
+        تقع مدينة العيون في جنوب المملكة المغربية، وتعتبر
+        عاصمة جهة العيون الساقية الحمراء. تتميز بموقعها
+        الصحراوي وبمناخها الخاص وبثقافتها الحسانية الأصيلة.
+      </p>
+
+      <p>
+        تعرف المدينة بتوسعها العمراني وساحاتها الواسعة
+        وشوارعها الجميلة، كما تشكل نقطة مهمة لاكتشاف
+        المناطق الصحراوية والساحلية المحيطة بها.
+      </p>
+
+      <div class="facts">
+        <div class="fact">
+          <h3>الموقع</h3>
+          <p>جنوب المملكة المغربية</p>
+        </div>
+
+        <div class="fact">
+          <h3>الجهة</h3>
+          <p>العيون الساقية الحمراء</p>
+        </div>
+
+        <div class="fact">
+          <h3>الطابع</h3>
+          <p>صحراوي وساحلي</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- معالم المدينة -->
+  <section class="places" id="places">
+    <div class="section-title">
+      <h2>أهم معالم مدينة العيون</h2>
+      <span></span>
+      <p>أماكن معروفة ومميزة داخل المدينة</p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <img
+          src="https://fr.le360.ma/resizer/v2/ISHM5ILMYZDSXMZKQ2LSIU63PY.png?auth=21da59cbd4b8cac4dabe4586b83ea48c061b3b5bc5f4747e842b82d20c770360&height=684&smart=true&width=1216"
+          alt="ساحة المشوار بالعيون"
+          loading="lazy">
+        <div class="card-content">
+          <h3>ساحة المشوار</h3>
+          <p>
+            من أشهر ساحات مدينة العيون، وتعرف بتنظيم
+            المناسبات والتجمعات والاحتفالات.
+          </p>
+          <span class="tag">صورة منشورة سنة 2026</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Place%20Oum%20Saad%20-%20Laayoune.jpg"
+          alt="ساحة أم السعد"
+          loading="lazy">
+        <div class="card-content">
+          <h3>ساحة أم السعد</h3>
+          <p>
+            من الفضاءات المعروفة بالمدينة، يقصدها السكان
+            والزوار للاستراحة والتنزه.
+          </p>
+          <span class="tag">معلم من المدينة</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <img
+          src="https://fr.le360.ma/resizer/v2/J6B6YLNAIZHU7L4ORMIOSASIZI.jpeg?auth=71dbdd5daa541b8ce94836f7014aa57973aa483930131d1de16cb4d9abfb1b65"
+          alt="شارع محمد السادس بالعيون"
+          loading="lazy">
+        <div class="card-content">
+          <h3>شارع السمارة سابقاً</h3>
+          <p>
+            يعرف اليوم بمحج محمد السادس، وهو من الشوارع
+            المعروفة في مدينة العيون.
+          </p>
+          <span class="tag">صورة منشورة سنة 2024</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/%D9%85%D8%B3%D8%AC%D8%AF%20%D8%A7%D9%84%D8%B4%D9%8A%D8%AE%20%D9%85%D8%A7%D8%A1%20%D8%A7%D9%84%D8%B9%D9%8A%D9%86%D9%8A%D9%86.jpg"
+          alt="مسجد الشيخ ماء العينين"
+          loading="lazy">
+        <div class="card-content">
+          <h3>مسجد الشيخ ماء العينين</h3>
+          <p>
+            معلم ديني وتاريخي يرتبط باسم الشيخ ماء العينين،
+            ويعد من المعالم المعروفة بالمدينة.
+          </p>
+          <span class="tag">معلم ديني وتاريخي</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/%D9%83%D8%AA%D8%A8%D8%A7%D9%86%20%D8%B1%D9%85%D9%84%D9%8A%D8%A9%20%D8%A8%D9%85%D8%AE%D9%8A%D9%85%20%D8%B3%D9%81%D8%A7%D8%B1%D9%8A%20%D8%A7%D9%84%D8%B9%D9%8A%D9%88%D9%86.jpg"
+          alt="مخيم سفاري العيون"
+          loading="lazy">
+        <div class="card-content">
+          <h3>مخيم سفاري العيون</h3>
+          <p>
+            فضاء صحراوي يتميز بالكثبان الرملية والأجواء
+            الطبيعية التي تعكس جمال الصحراء.
+          </p>
+          <span class="tag">الطبيعة الصحراوية</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Laayoune%2CSaguia-el-Hamra.jpg"
+          alt="الساقية الحمراء"
+          loading="lazy">
+        <div class="card-content">
+          <h3>الساقية الحمراء</h3>
+          <p>
+            ترتبط المنطقة باسم الساقية الحمراء، التي تحمل
+            أهمية جغرافية وتاريخية في المنطقة.
+          </p>
+          <span class="tag">الهوية الجغرافية</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- فم الواد -->
+  <section class="beach" id="beach">
+    <div class="section-title">
+      <h2>فم الواد</h2>
+      <span></span>
+      <p>جمال البحر والطبيعة بالقرب من العيون</p>
+    </div>
+
+    <div class="beach-box">
+      <img
+        src="https://fr.le360.ma/resizer/v2/75NTTT5GLRGGHJIHNQQ37PPTHA.png?auth=f13f92544ec4ab87cec38576135a91ae6bbfbbb5716642e17817ca8c26e3f8af&height=684&smart=true&width=1216"
+        alt="شاطئ فم الواد"
+        loading="lazy">
+
+      <div>
+        <h3>شاطئ فم الواد</h3>
+        <p>
+          يقع فم الواد بالقرب من مدينة العيون، ويعتبر
+          من الوجهات الساحلية التي يقصدها السكان والزوار،
+          خصوصاً خلال فصل الصيف.
+        </p>
+        <p>
+          يتميز بالشاطئ الواسع والأجواء البحرية الجميلة،
+          ويشكل مكاناً مناسباً للاستمتاع بالطبيعة والراحة.
+        </p>
+        <span class="tag">صورة منشورة سنة 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- الثقافة والتراث الصحراوي بالصور -->
+<section class="culture-section" id="heritage">
+
+  <div class="section-title">
+    <h2>الثقافة والتراث الصحراوي</h2>
+    <span></span>
+    <p>اكتشفوا جمال اللباس والعادات والفنون الصحراوية</p>
+  </div>
+
+  <div class="culture-cards">
+
+    <!-- الدراعة -->
+    <div class="culture-card">
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Der%C3%A2a%20sahraouia%20marocaine.png"
+        alt="الدراعة الصحراوية"
+        loading="lazy">
+
+      <div class="info">
+        <h3>الدراعة الصحراوية</h3>
+        <p>
+          لباس رجالي تقليدي صحراوي يتميز بالاتساع
+          والألوان الجميلة، ويرمز إلى الأصالة والهوية.
+        </p>
+      </div>
+    </div>
+
+    <!-- الملحفة -->
+    <div class="culture-card">
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Des%20femmes%20sahraouies%20v%C3%AAtues%20de%20melhfa%20color%C3%A9es.jpg"
+        alt="الملحفة الصحراوية"
+        loading="lazy">
+
+      <div class="info">
+        <h3>الملحفة</h3>
+        <p>
+          لباس نسائي تقليدي صحراوي يتميز بألوانه
+          المتنوعة وطريقته الخاصة في الارتداء.
+        </p>
+      </div>
+    </div>
+
+    <!-- أتاي -->
+    <div class="culture-card">
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/TeaSeremonyWS.jpg"
+        alt="جلسة أتاي صحراوية"
+        loading="lazy">
+
+      <div class="info">
+        <h3>أتاي الصحراوي</h3>
+        <p>
+          رمز الكرم والضيافة، ويُحضّر في جلسات
+          تقليدية تجمع العائلة والأصدقاء.
+        </p>
+      </div>
+    </div>
+
+    <!-- الصينية والكؤوس -->
+    <div class="culture-card">
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Camel%20herder%20making%20Sahraoui%20Tea.jpg"
+        alt="تحضير الشاي الصحراوي"
+        loading="lazy">
+
+      <div class="info">
+        <h3>الصينية والكؤوس</h3>
+        <p>
+          أدوات أساسية في جلسة الشاي الصحراوية،
+          وتضفي عليها طابعاً تقليدياً مميزاً.
+        </p>
+      </div>
+    </div>
+
+    <!-- الطبول -->
+    <div class="culture-card">
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/When%20Drums%20Speak.jpg"
+        alt="الطبول والإيقاعات التقليدية"
+        loading="lazy">
+
+      <div class="info">
+        <h3>الطبول والإيقاعات</h3>
+        <p>
+          الطبل من الآلات الإيقاعية التي ترافق
+          بعض الأهازيج والاحتفالات الشعبية.
+        </p>
+      </div>
+    </div>
+
+    <!-- الموسيقى الحسانية -->
+    <div class="culture-card">
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Traditional%20Sahrawi%20Music%20Gathering%20Around%20a%20Fire%20in%20Morocco.png"
+        alt="جلسة موسيقية صحراوية"
+        loading="lazy">
+
+      <div class="info">
+        <h3>الموسيقى الحسانية</h3>
+        <p>
+          فن أصيل يعبر عن الثقافة الصحراوية،
+          من خلال الألحان والإيقاعات والأهازيج.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  <!-- معرض الصور -->
+  <section class="gallery" id="gallery">
+    <div class="section-title">
+      <h2>معرض صور مدينة العيون</h2>
+      <span></span>
+      <p>مشاهد من المدينة ومحيطها</p>
+    </div>
+
+    <div class="gallery-grid">
+
+      <img
+        src="https://fr.le360.ma/resizer/v2/ISHM5ILMYZDSXMZKQ2LSIU63PY.png?auth=21da59cbd4b8cac4dabe4586b83ea48c061b3b5bc5f4747e842b82d20c770360&height=684&smart=true&width=1216"
+        alt="ساحة المشوار"
+        loading="lazy">
+
+      <img
+        src="https://fr.le360.ma/resizer/v2/75NTTT5GLRGGHJIHNQQ37PPTHA.png?auth=f13f92544ec4ab87cec38576135a91ae6bbfbbb5716642e17817ca8c26e3f8af&height=684&smart=true&width=1216"
+        alt="فم الواد"
+        loading="lazy">
+
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Laayoune%2CPlaceMechouar.jpg"
+        alt="ساحة المشوار"
+        loading="lazy">
+
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Laayoune%20Av.%20Meka.jpg"
+        alt="شارع بمدينة العيون"
+        loading="lazy">
+
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/%D8%B3%D8%A7%D8%AD%D8%A9%20%D8%A3%D9%85%20%D8%A7%D9%84%D8%B3%D8%B9%D8%AF.jpg"
+        alt="ساحة أم السعد"
+        loading="lazy">
+
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/%D9%85%D8%B3%D8%AC%D8%AF%20%D8%A7%D9%84%D8%B4%D9%8A%D8%AE%20%D9%85%D8%A7%D8%A1%20%D8%A7%D9%84%D8%B9%D9%8A%D9%86%D9%8A%D9%86.jpg"
+        alt="مسجد الشيخ ماء العينين"
+        loading="lazy">
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <h2>العيون، جوهرة الصحراء</h2>
+    <p>مدينة الأصالة والجمال والتراث الصحراوي</p>
+    <p>© 2026 - جميع الحقوق محفوظة</p>
+  </footer>
+
+  <a href="#home" class="back-top" title="العودة للأعلى">↑</a>
+
+</body>
+</html>
